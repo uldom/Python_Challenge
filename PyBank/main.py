@@ -12,13 +12,15 @@ with open(csvpath) as csvfile:
     csv_header = next(csvreader,None)
     # Declare variables
     Months = 0
-    Total_amount=[]
-    
+    Amounts=[]
+    Total_Amount = 0
+
+
     # Loop
     for row in csvreader:
-        months = months + 1
-        Total_amount.append (int(row[1]))
-    
+        Months = Months + 1
+        Amounts.append (int(row[1]))
+        Total_Amount = sum(Amounts)
     
 #print(row)
 #print (type(row[1]))
@@ -26,7 +28,7 @@ with open(csvpath) as csvfile:
 print ("Financial Analysis")
 print ("------------------")
 print (f"Total Months: {Months} months")
-print ("Total Amount:")
-print ("Average Change:")
-print ("Greatest Increase in Profits:")
-print ("Greatest Decrease in Profits:")
+print (f"Total Amount: {Total_Amount}")
+print (f"Average Change: ")
+print ("Greatest Increase in Profits: ")
+print ("Greatest Decrease in Profits: ")
