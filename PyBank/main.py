@@ -11,24 +11,45 @@ with open(csvpath) as csvfile:
     print(csvreader)
     csv_header = next(csvreader,None)
     # Declare variables
-    Months = 0
+    Count_Months = 0
     Amounts=[]
     Total_Amount = 0
+    Prev_Amount = 0
+    Curr_Amount = 0
+    Delta = []
+    Months = []
 
 
     # Loop
     for row in csvreader:
-        Months = Months + 1
+        Count_Months = Count_Months + 1
         Amounts.append (int(row[1]))
         Total_Amount = sum(Amounts)
-    
+        Curr_Amount = int(row[1])
+    # Conditional for Change Average
+        if Count_Months == 1:
+            Prev_Amount = Curr_Amount
+            continue
+        else:
+            # calculate the change amount in a given month
+            delta = Curr_Amount - Prev_Amount
+            # generate the list of the months
+            Months.append(row[0])
+            # generate the list with the deltas
+            Delta.append(delta)
+            # stop the loop
+            Prev_Amount = Curr_Amount
+
+
 #print(row)
 #print (type(row[1]))
 
 print ("Financial Analysis")
 print ("------------------")
-print (f"Total Months: {Months} months")
+print (f"Total Months: {Count_Months} months")
 print (f"Total Amount: {Total_Amount}")
 print (f"Average Change: ")
 print ("Greatest Increase in Profits: ")
 print ("Greatest Decrease in Profits: ")
+# print (Months)
+# print (Delta)
