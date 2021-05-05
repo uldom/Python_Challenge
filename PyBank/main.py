@@ -40,10 +40,13 @@ with open(csvpath) as csvfile:
             Delta.append(delta)
             # stop the loop
             Prev_Amount = Curr_Amount
-
-# SUmmary
+# calculate average change 
 Total = sum (Delta)
 Average = round(Total/(Count_Months-1),)
+# calculate greatest increase and decrease
+increase = max (Delta)
+decrease = min (Delta)
+
 
 
 #print(row)
@@ -58,3 +61,5 @@ print ("Greatest Increase in Profits: ")
 print ("Greatest Decrease in Profits: ")
 # print (Months)
 # print (Delta)
+print (increase)
+print (decrease)
