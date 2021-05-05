@@ -72,3 +72,14 @@ print (f"Greatest Decrease in Profits: $ {decrease:,} in {dec_mon}")
 # print (decrease)
 # print (inc_mon)
 # print (dec_mon)
+
+# export to a txt file
+txt_file = os.path.join (r"D:\036_Rice\1_Homework_UD\Python_Challenge\PyBank\Output\Financial_Analysis.txt")
+with open (txt_file,"w") as outfile:
+    outfile.write("Financial Analysis\n")
+    outfile.write("------------------\n")
+    outfile.write(f"Total Months: {Count_Months} months\n")
+    outfile.write(f"Total Amount: $ {Total_Amount:,}\n")
+    outfile.write(f"Average Change: $ {Average:,}\n")
+    outfile.write(f"Greatest Increase in Profits: $ {increase:,} in {inc_mon}\n")
+    outfile.write(f"Greatest Decrease in Profits: $ {decrease:,} in {dec_mon}\n")
