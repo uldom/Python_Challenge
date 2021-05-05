@@ -10,6 +10,7 @@ with open(csvpath) as csvfile:
     csvreader = csv.reader (csvfile,delimiter=",")
     print(csvreader)
     csv_header = next(csvreader,None)
+   
     # Declare variables
     Count_Months = 0
     Amounts=[]
@@ -18,14 +19,14 @@ with open(csvpath) as csvfile:
     Curr_Amount = 0
     Delta = []
     Months = []
-
-
+        
     # Loop
     for row in csvreader:
         Count_Months = Count_Months + 1
         Amounts.append (int(row[1]))
         Total_Amount = sum(Amounts)
         Curr_Amount = int(row[1])
+
     # Conditional for Change Average
         if Count_Months == 1:
             Prev_Amount = Curr_Amount
@@ -40,6 +41,10 @@ with open(csvpath) as csvfile:
             # stop the loop
             Prev_Amount = Curr_Amount
 
+# SUmmary
+Total = sum (Delta)
+Average = round(Total/(Count_Months-1),)
+
 
 #print(row)
 #print (type(row[1]))
@@ -47,8 +52,8 @@ with open(csvpath) as csvfile:
 print ("Financial Analysis")
 print ("------------------")
 print (f"Total Months: {Count_Months} months")
-print (f"Total Amount: {Total_Amount}")
-print (f"Average Change: ")
+print (f"Total Amount: {Total_Amount:,}")
+print (f"Average Change: {Average:,} ")
 print ("Greatest Increase in Profits: ")
 print ("Greatest Decrease in Profits: ")
 # print (Months)
