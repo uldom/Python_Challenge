@@ -39,22 +39,28 @@ max_votes = max(votes)
 winner = set_names[votes.index(max_votes)]
 
 # print results
-
-print("Election Results\n")
-print("-----------------\n")
+print("Election Results")
+print("-------------------------------")
 print(f"Total {total_votes:,} votes")        
-print(set_names)
-print(votes)
-print(percent)
-print(winner)
+print("-------------------------------")
+
+# Print the results in one row
+for r in range(len(set_names)):
+    print(f"{set_names[r]}: {votes[r]:,} votes, {round(percent[r],0)} %")
+# print(set_names)
+# print(votes)
+# print(percent)
+print("-------------------------------")
+print(f"The winner of this election is: Mr. {winner}!")
 
 # export to a txt file
-# txt_file = os.path.join (r"D:\036_Rice\1_Homework_UD\Python_Challenge\PyPoll\Output\Election_Results.txt")
-# with open (txt_file,"w") as outfile:
-#     outfile.write("Financial Analysis\n")
-#     outfile.write("------------------\n")
-#     outfile.write(f"Total Months: {Count_Months} months\n")
-#     outfile.write(f"Total Amount: $ {Total_Amount:,}\n")
-#     outfile.write(f"Average Change: $ {Average:,}\n")
-#     outfile.write(f"Greatest Increase in Profits: $ {increase:,} in {inc_mon}\n")
-#     outfile.write(f"Greatest Decrease in Profits: $ {decrease:,} in {dec_mon}\n")
+txt_file = os.path.join (r"D:\036_Rice\1_Homework_UD\Python_Challenge\PyPoll\Output\Election_Results.txt")
+with open (txt_file,"w") as outfile:
+    outfile.write("Election Results\n")
+    outfile.write("-------------------------------\n")
+    outfile.write(f"Total {total_votes:,} votes\n")
+    outfile.write("-------------------------------\n")
+    for r in range(len(set_names)):
+        outfile.write(f"{set_names[r]}: {votes[r]:,} votes, {round(percent[r],0)} %\n")
+    outfile.write("-------------------------------\n")     
+    outfile.write(f"The winner of this election is: Mr. {winner}!")
