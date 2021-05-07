@@ -22,12 +22,21 @@ with open(csvpath) as csvfile:
     percent_votes = 0
     percent = []
 
-    # Loop
+    # Loop for counting total of votes
     for row in csvreader:
         total_votes = total_votes + 1
-        
-        # generate the list with the candidates
+        # generate the list with the set of candidates
         names.append(row[2])
-        
+    # Loop for identifying unique candidates
+    for c in set (names):
+        set_names.append(c)
+        count_votes = names.count(c)
+        votes.append(count_votes)    
+
+
+
+
 
 print(total_votes)        
+print(set_names)
+print(votes)
