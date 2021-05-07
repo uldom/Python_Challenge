@@ -32,11 +32,29 @@ with open(csvpath) as csvfile:
         set_names.append(c)
         count_votes = names.count(c)
         votes.append(count_votes)    
+        percent_votes = (count_votes/total_votes)*100
+        percent.append(percent_votes)
 
+max_votes = max(votes)
+winner = set_names[votes.index(max_votes)]
 
+# print results
 
-
-
-print(total_votes)        
+print("Election Results\n")
+print("-----------------\n")
+print(f"Total {total_votes:,} votes")        
 print(set_names)
 print(votes)
+print(percent)
+print(winner)
+
+# export to a txt file
+# txt_file = os.path.join (r"D:\036_Rice\1_Homework_UD\Python_Challenge\PyPoll\Output\Election_Results.txt")
+# with open (txt_file,"w") as outfile:
+#     outfile.write("Financial Analysis\n")
+#     outfile.write("------------------\n")
+#     outfile.write(f"Total Months: {Count_Months} months\n")
+#     outfile.write(f"Total Amount: $ {Total_Amount:,}\n")
+#     outfile.write(f"Average Change: $ {Average:,}\n")
+#     outfile.write(f"Greatest Increase in Profits: $ {increase:,} in {inc_mon}\n")
+#     outfile.write(f"Greatest Decrease in Profits: $ {decrease:,} in {dec_mon}\n")
